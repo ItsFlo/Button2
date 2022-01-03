@@ -28,6 +28,7 @@
 #define LONG_CLICK 4
 
 #define UNDEFINED_PIN 255
+#define SKIP_PINMODE 255
 
 /////////////////////////////////////////////////////////////////
 
@@ -47,11 +48,11 @@ protected:
   uint16_t longclick_detected_counter;
   bool longclick_detected = false;
   bool longclick_detected_reported = false;
-  
+
   unsigned int debounce_time_ms;
   unsigned int longclick_time_ms;
   unsigned int doubleclick_time_ms;
-  
+
   unsigned int down_time_ms = 0;
   bool pressed_triggered = false;
 
@@ -80,7 +81,7 @@ public:
   void setDebounceTime(unsigned int ms);
   void setLongClickTime(unsigned int ms);
   void setDoubleClickTime(unsigned int ms);
-  
+
   unsigned int getDebounceTime() const;
   unsigned int getLongClickTime() const;
   unsigned int getDoubleClickTime() const;
@@ -113,8 +114,8 @@ public:
 
   void loop();
 
-private: 
-  byte _getState();
+protected:
+  virtual byte _getState();
 
 };
 /////////////////////////////////////////////////////////////////
